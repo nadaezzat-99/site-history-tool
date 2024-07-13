@@ -1,0 +1,15 @@
+{
+    "data": {
+      "site_general_info": {
+        "site_id": "1723",
+        "option": "A",
+        "region": "Region1",
+        "site_type": "Type1",
+        "structure_type": "TypeA",
+        "structure_height": "100m"
+      },
+      "map": "",
+      "status":8000
+    }
+  }
+  

@@ -1,0 +1,136 @@
+<div class="container-fluid h-100" >
+    <div class="row h-100 ">
+        <!-- Sidebar Column -->
+        <div class="col-md-3 col-xl-2 px-sm-2 px-0 sidebar-color h-100 d-sm-none d-lg-block">
+            <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white p-2">
+                <a href="/" class="d-flex align-items-center m-auto pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                    <span class="fs-5 d-none d-sm-inline text-danger">RO Platform</span>
+                </a>
+                <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start m-auto" id="menu">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link align-middle my-2 text-white">Acceptance Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" data-bs-toggle="collapse" class="nav-link my-2 align-middle text-white">Power Consumption</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" ata-bs-toggle="collapse"  class="nav-link my-2 align-middle text-white">Power Generator</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" data-bs-toggle="collapse" class="nav-link my-2 align-middle text-white">Site Information</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" data-bs-toggle="collapse" class="nav-link my-2 align-middle text-white">Site Management</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" data-bs-toggle="collapse" class="nav-link my-2 align-middle text-white">Constructor Evaluation</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" data-bs-toggle="collapse"  class="nav-link my-2 align-middle text-white active ">Site History</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" data-bs-toggle="collapse" class="nav-link my-2 align-middle text-white">Safety Shield</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#"  data-bs-toggle="collapse" class="nav-link my-2 align-middle text-white">H&S Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" data-bs-toggle="collapse" class="nav-link my-2 align-middle text-white">GSM Tracker</a>
+                    </li>
+                </ul>
+                <hr>
+                <div class=" d-flex  m-auto">
+                    <button class="btn btn-outline-danger p-auto">
+                        <span class="d-none d-sm-inline mx-1">Logout <fa-icon [icon]="faSignout"></fa-icon> </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Main Content Column -->
+        <div class="col">
+            <div class="text-center">
+                <h3 class="text-dark py-2 mb-3">Site Information</h3>
+            </div>
+            <div class="d-flex flex-column h-100">
+                <!-- Search Part -->
+                <div class="d-flex  justify-content-around" *ngIf="activeTabIndex === 0">
+                    <div class="my-2 my-lg-0 w-25 d-flex align-items-center justify-content-center">
+                        <input class="form-control mr-sm-2 mx-2" required type="text" placeholder="Site Id" aria-label="Search" [(ngModel)]="search" (keyup.enter)="getSiteData()">
+                        <button class="btn btn-light my-2 my-sm-0" (click)="getSiteData()" [disabled]="search.trim().length ? false : true ">Search</button>
+                    </div>
+                </div>
+                <!-- TabView with PrimeNG -->
+                <div class="h-100 ">
+                    <p-tabView  (onChange)="onTabChange($event)" >
+                        <p-tabPanel header="Site Info" class="container-fluid ">
+                            <!-- Site Info Form -->
+                                <div class=" d-flex flex-row w-100 justify-content-around ">
+                                <form [formGroup]="siteInfoForm" class="form-group text-center w-75 mr-4 mt-8">
+                                    <h3 class="text-danger text-start" style="font-size: 20px; font-weight: bold;">General Info</h3>
+                                            <div class="row">
+                                                <div class="col d-flex flex-column align-items-start">
+                                                    <label for="siteId">Site ID</label>
+                                                    <input id="siteId" type="text" formControlName="siteId" class="form-control" readonly>
+                                                </div>
+                                                <div class="col d-flex flex-column align-items-start">
+                                                    <label for="region">Region</label>
+                                                    <input id="region" type="text" formControlName="region" class="form-control" readonly>
+                                                </div>
+                                                <div class="col d-flex flex-column align-items-start">
+                                                    <label for="option">Option</label>
+                                                    <input id="option" type="text" formControlName="option" class="form-control" readonly>
+                                                </div>
+                                            </div>
+                                            <div class="row pt-4">
+                                    <h3 class="text-danger text-start" style="font-size: 20px; font-weight: bold;">Structural Info</h3>
+
+                                                <div class="col d-flex flex-column align-items-start">
+                                                    <label for="rtGf">RT/GF</label>
+                                                    <input id="rtGf" type="text" formControlName="structureInfo" class="form-control" readonly>
+                                                </div>
+                                                <div class="col d-flex flex-column align-items-start">
+                                                    <label for="structureType">Structure Type</label>
+                                                    <input id="structureType" type="text" formControlName="structureType" class="form-control" readonly>
+                                                </div>
+                                                <div class="col d-flex flex-column align-items-start">
+                                                    <label for="height">Height</label>
+                                                    <input id="height" type="text" formControlName="height" class="form-control" readonly>
+                                                </div>
+                                            </div>
+                                    </form>
+                                   
+                                <!-- Embed Responsive Column for Map -->
+                                <div class="embed-responsive embed-responsive-21by9 mr-2">
+                                    <iframe  height="570" width="360" [src]="siteData.map | safe" frameborder="1" scrolling="no" marginheight="0" marginwidth="0"  ></iframe>
+                                </div>
+                            </div>
+                        </p-tabPanel>
+                        <!-- Second TabPanel for Site Update -->
+                        <p-tabPanel header="Site Update " class="d-flex justify-content-center w-100  ">
+                            <div class=" card d-flex flex-row align-items-center justify-content-center p-6" style="margin-top: 110px;">
+                                <div class="mt-5 mr-2">
+                                    <h6> Upload file with the new site data update</h6>
+                                </div>
+                                <div class="mt-6 upload-btn">
+                                    <!-- Choose Button -->
+                                     <p-toast></p-toast>
+                                    <p-fileUpload  
+                                        mode="basic" 
+                                        chooseLabel="Browse file" 
+                                        chooseIcon="pi pi-upload"
+                                        name="demo[]" 
+                                        url="api/files/" 
+                                        accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+                                        (onUpload)="onUpload($event)"
+                                        (onError)="onError($event)"
+                                        >
+                                    </p-fileUpload>
+                                </div>
+                            </div>
+                        </p-tabPanel>
+                    </p-tabView>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

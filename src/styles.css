@@ -1,0 +1,112 @@
+/* You can add global styles to this file, and also import other style files */
+html {
+    font-size: 16px;
+    min-height:100%;
+}
+
+
+body{
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+
+
+.upload-btn{
+    /* border: solid rgb(205, 49, 49) 1px;
+     padding: 5px ;
+      border-radius: 5px; */
+
+      border: solid rgb(205, 49, 49) 1px;
+      padding: 5px ;
+      border-radius: 5px;
+      background-color: rgb(205, 49, 49) ;
+      color: white;
+}
+
+
+.upload-btn :hover{
+      border: solid rgb(205, 49, 49) 1px;
+      /* padding: 5px ; */
+      border-radius: 5px;
+      background-color: rgb(205, 49, 49) ;
+      color: white;
+}
+
+/* 
+.card {
+    background: var(--surface-card);
+    padding: 2rem;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+} */
+
+.background-color{
+    background-color: rgb(249, 249, 249);
+}
+
+
+  /* not selected */
+/* .p-tabview .p-tabview-nav li .p-tabview-nav-link {
+    border-color: gray;
+    background: lightgrey;
+    color: navy;
+    } */
+    /* hover */
+    /* .p-tabview .p-tabview-nav li:not(.p-highlight):not(.p-disabled):hover .p-tabview-nav-link {
+    background: rgb(214, 210, 210);
+    border-color: brown;
+    color: black;
+    } */
+    /* selected */
+    /* .p-tabview .p-tabview-nav li.p-highlight .p-tabview-nav-link {
+    background: brown;
+    border-color: brown;
+    color: brown;
+    margin: auto;
+
+    }  */
+
+
+
+.p-tabview-nav .p-tabview-title {
+    line-height: 1;
+    white-space: nowrap;
+    color: black;
+    margin: 2px;
+    padding: 10px;
+}
+
+   /* selected */
+.p-tabview .p-tabview-nav li.p-highlight .p-tabview-nav-link {
+   color: brown;
+   border: 1px solid rgb(212, 210, 210); 
+   /* border-radius: 10%; */
+   box-shadow: 2px;
+   background-color: white;
+   box-shadow: 4 8px 8px rgba(0, 0, 0, 0.1);
+   border-bottom: none !important;
+}
+
+hr.site-info{
+    margin-left: 95px;
+    width: 1000px;
+}
+
+
+hr.site-update{
+    margin-left: 95px;
+    width: 1000px;
+}
+
+a.nav-link.active
+{
+    border: 1px solid #2c0c82;
+    margin: auto;
+    margin-left: 10px;
+    padding-left: 10px;
+    --bs-nav-link-padding-x: 81px;
+    border-radius: 0;
+    background-color: transparent !important;
+}
+
